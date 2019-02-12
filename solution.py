@@ -91,6 +91,9 @@ def read_image(image_path):
     img = cv2.imread(image_path,0)
     return img
 
+# Couldn't get this working 
+def encode_image(image_to_encode):
+    return cv2.imencode('.png', image_to_encode)
 #5 marks: Save an image and return True is successful, False if not
 #Input: image_to_save = 8 unsigned integer numpy array (image)
 #       image_path = string path to save the image
@@ -120,15 +123,14 @@ Input: img = input HxWx1 grayscale image
 Output: return unsigned 8b integer image
 """
 
-def imgfilter2d(image,ksize=11,padding=cv2.BORDER_REFLECT):
+def imgfilter2d(image,sigma =5, impulse_mag=2, ksize=11,padding=cv2.BORDER_REFLECT):
     #5 Mark: Create sharpen filter with a 9x9 Gaussian kernel with sigma 5, and unit
     #        impulse of 2 
 
-    sigma = 5
     impulse = np.zeros((ksize,ksize))
 
     # Create impulse by setting center of zero matrix as 2
-    impulse[ksize // 2 + 1, ksize // 2 + 1] = 2
+    impulse[ksize // 2 + 1, ksize // 2 + 1] = impulse_mag
     kernel = gkern(ksize,sigma) 
     # Compute approximate Laplacian of Gaussian (as stated in lecture notes 2)
     kernel = impulse - kernel

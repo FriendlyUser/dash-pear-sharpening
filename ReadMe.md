@@ -1,6 +1,6 @@
 ### Pear Sharpening Dashboard
 
-Allow a user to sharpen a pear while changing system parameters
+Allow a user to sharpen a pear while changing system parameters.
 
 This should be doable because I can call the old functions from the solution.py module.
 
