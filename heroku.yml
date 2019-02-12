@@ -1,0 +1,8 @@
+build:
+  config:
+    HEROKU_REGISTRY_HOST: registry.heroku.com
+    HEROKU_API_TOKEN: 7e27d416-c41b-4301-9bdd-d3fcd5f6d1e0
+  docker:
+    web: Dockerfile
+run:
+  web: gunicorn app:server
